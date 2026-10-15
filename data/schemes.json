@@ -1,0 +1,1308 @@
+[
+  {
+    "id": "startup-seed-fund",
+    "domain": "startup-funding",
+    "name": "Startup India Seed Fund Scheme",
+    "administeringAuthority": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "seed-funding",
+      "summary": "Seed support to DPIIT-recognised startups for proof of concept, trials and market entry."
+    },
+    "intendedFor": "Early-stage startups with DPIIT recognition (or applied) working on proof of concept, trials or market entry.",
+    "nextStep": "Confirm DPIIT recognition status, then apply through an approved incubator under the scheme.",
+    "eligibilityRules": [
+      {
+        "field": "applicantType",
+        "operator": "in",
+        "value": [
+          "startup",
+          "individual"
+        ],
+        "required": true,
+        "description": "Applicant must be a startup or founder applying as a startup.",
+        "sourceUrl": "https://www.startupindia.gov.in/content/sih/en/government-schemes/seed-fund-scheme.html",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check the official guidelines to confirm which applicant types are covered."
+      },
+      {
+        "field": "businessStage",
+        "operator": "in",
+        "value": [
+          "idea",
+          "early-stage"
+        ],
+        "required": true,
+        "description": "Business stage must be idea or early-stage.",
+        "sourceUrl": "https://www.startupindia.gov.in/content/sih/en/government-schemes/seed-fund-scheme.html",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check the official guidelines to confirm which business stages are covered."
+      },
+      {
+        "field": "recognitionStatus",
+        "operator": "in",
+        "value": [
+          "recognised",
+          "applied"
+        ],
+        "required": true,
+        "description": "Startup should be DPIIT-recognised or have applied.",
+        "sourceUrl": "https://www.startupindia.gov.in/content/sih/en/government-schemes/seed-fund-scheme.html",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check your DPIIT recognition status on the Startup India portal."
+      }
+    ],
+    "documents": [
+      "DPIIT recognition certificate (or application proof)",
+      "Pitch deck / business plan",
+      "Promoter ID proof (as listed on official portal)"
+    ],
+    "applicationSteps": [
+      "Check recognition status on Startup India portal",
+      "Apply to an approved incubator under the scheme",
+      "Complete incubator screening and submit documents"
+    ],
+    "officialInfoUrl": "https://www.startupindia.gov.in/content/sih/en/government-schemes/seed-fund-scheme.html",
+    "officialApplicationUrl": "https://www.startupindia.gov.in/",
+    "sources": [
+      {
+        "url": "https://www.startupindia.gov.in/content/sih/en/government-schemes/seed-fund-scheme.html",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Final eligibility is decided by the incubator and implementing authority. Confirm current guidelines on the official portal.",
+    "category": "seed-funding"
+  },
+  {
+    "id": "gujarat-startup-policy",
+    "domain": "startup-funding",
+    "name": "Gujarat Startup Innovation Assistance",
+    "administeringAuthority": "Government of Gujarat (Startup Gujarat)",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "Gujarat"
+      ]
+    },
+    "benefit": {
+      "type": "grant",
+      "summary": "State assistance for Gujarat-based startups including seed support and incubation linkage."
+    },
+    "intendedFor": "Startups and founders operating in Gujarat seeking state innovation assistance.",
+    "nextStep": "Register on the Startup Gujarat portal and confirm the current policy window before applying.",
+    "eligibilityRules": [
+      {
+        "field": "state",
+        "operator": "equals",
+        "value": "Gujarat",
+        "required": true,
+        "description": "Applicant must meet the scheme's state condition (Gujarat).",
+        "sourceUrl": "https://startup.gujarat.gov.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Confirm the state condition on the official Startup Gujarat portal."
+      },
+      {
+        "field": "applicantType",
+        "operator": "in",
+        "value": [
+          "startup",
+          "individual",
+          "msme"
+        ],
+        "required": true,
+        "description": "Applicant or business type must be covered by the scheme.",
+        "sourceUrl": "https://startup.gujarat.gov.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check the official portal to confirm which applicant types are covered."
+      },
+      {
+        "field": "businessStage",
+        "operator": "in",
+        "value": [
+          "idea",
+          "early-stage",
+          "operating"
+        ],
+        "required": true,
+        "description": "Business stage must be covered by the scheme.",
+        "sourceUrl": "https://startup.gujarat.gov.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check the official portal to confirm which business stages are covered."
+      }
+    ],
+    "documents": [
+      "Address / domicile proof for Gujarat linkage",
+      "Business registration or startup details",
+      "Project proposal"
+    ],
+    "applicationSteps": [
+      "Visit the Startup Gujarat portal",
+      "Register and fill the assistance application",
+      "Submit documents and track status"
+    ],
+    "officialInfoUrl": "https://startup.gujarat.gov.in/",
+    "officialApplicationUrl": "https://startup.gujarat.gov.in/",
+    "sources": [
+      {
+        "url": "https://startup.gujarat.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Benefits and ceilings change with policy revisions. Confirm on the official portal.",
+    "category": "startup-support"
+  },
+  {
+    "id": "mudra-loan",
+    "domain": "startup-funding",
+    "name": "Pradhan Mantri MUDRA Yojana",
+    "administeringAuthority": "Ministry of Finance / MUDRA Ltd.",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "loan",
+      "summary": "Collateral-free business loans (Shishu / Kishore / Tarun) via banks and MFIs for small enterprises."
+    },
+    "intendedFor": "Non-corporate small businesses and micro-enterprises seeking bank loans for income-generating activity.",
+    "nextStep": "Approach a MUDRA-offering bank or MFI with identity, business and KYC documents; sanction is the lender's decision.",
+    "eligibilityRules": [
+      {
+        "field": "applicantType",
+        "operator": "in",
+        "value": [
+          "individual",
+          "startup",
+          "msme"
+        ],
+        "required": true,
+        "description": "Applicant must be a non-corporate small business borrower.",
+        "sourceUrl": "https://www.mudra.org.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Confirm borrower eligibility with the lending bank or MUDRA guidelines."
+      },
+      {
+        "field": "fundingPurpose",
+        "operator": "in",
+        "value": [
+          "seed",
+          "equipment",
+          "working-capital"
+        ],
+        "required": true,
+        "description": "Funding purpose must be an income-generating business activity.",
+        "sourceUrl": "https://www.mudra.org.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check with the lender whether your purpose qualifies as income-generating activity."
+      },
+      {
+        "field": "businessStage",
+        "operator": "in",
+        "value": [
+          "idea",
+          "early-stage",
+          "operating"
+        ],
+        "required": true,
+        "description": "Open to new and existing small businesses.",
+        "sourceUrl": "https://www.mudra.org.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "New and existing businesses are both covered; confirm with the lender."
+      }
+    ],
+    "documents": [
+      "Identity and address proof",
+      "Business plan / project report",
+      "Bank statements as required by the lending bank"
+    ],
+    "applicationSteps": [
+      "Approach a bank / MFI offering MUDRA loans",
+      "Submit the application with business details",
+      "Complete bank verification and sanction process"
+    ],
+    "officialInfoUrl": "https://www.mudra.org.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.mudra.org.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "verified",
+    "notes": "Loan sanction is at the bank's discretion. Interest and terms vary by lender.",
+    "category": "business-loan"
+  },
+  {
+    "id": "pmjay",
+    "domain": "health-coverage",
+    "name": "Ayushman Bharat PM-JAY",
+    "administeringAuthority": "National Health Authority (NHA)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Cashless health cover of Rs. 5 lakh per family per year for eligible families at empanelled hospitals."
+    },
+    "intendedFor": "Families in the official SECC/beneficiary records eligible for cashless hospitalisation cover.",
+    "nextStep": "Check beneficiary status on the NHA beneficiary portal or at an empanelled hospital help desk.",
+    "eligibilityRules": [
+      {
+        "field": "beneficiaryCategory",
+        "operator": "in",
+        "value": [
+          "low-income",
+          "worker-family"
+        ],
+        "required": true,
+        "description": "Family must fall in a covered SECC / beneficiary category.",
+        "sourceUrl": "https://nha.gov.in/PM-JAY",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Check the official SECC/beneficiary list on the NHA portal."
+      },
+      {
+        "field": "hasGovtCoverage",
+        "operator": "equals",
+        "value": "no",
+        "required": false,
+        "description": "Already-covered families may have different options; checked as optional.",
+        "sourceUrl": "https://nha.gov.in/PM-JAY",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Does not block this result; confirm existing cover with the issuing authority."
+      }
+    ],
+    "documents": [
+      "Aadhaar / family ID for verification at hospital (do not enter it here)",
+      "Ration card or SECC-linked family proof",
+      "Mobile number for beneficiary verification"
+    ],
+    "applicationSteps": [
+      "Check beneficiary status on the NHA beneficiary portal",
+      "Visit an empanelled hospital help desk",
+      "Complete e-KYC and claim verification at hospital"
+    ],
+    "officialInfoUrl": "https://nha.gov.in/PM-JAY",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://nha.gov.in/PM-JAY",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "verified",
+    "notes": "Eligibility depends on official SECC/beneficiary lists. Confirm with NHA or the hospital help desk.",
+    "category": "national-health"
+  },
+  {
+    "id": "ma-gujarat",
+    "domain": "health-coverage",
+    "name": "Mukhyamantri Amrutum (MA) Yojana — Gujarat",
+    "administeringAuthority": "Government of Gujarat",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "Gujarat"
+      ]
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Cashless treatment coverage for eligible Gujarat families at empanelled hospitals."
+    },
+    "intendedFor": "Gujarat families covered under state health-assistance guidelines.",
+    "nextStep": "Confirm current income and category terms with the Gujarat health authority before seeking treatment.",
+    "eligibilityRules": [
+      {
+        "field": "state",
+        "operator": "equals",
+        "value": "Gujarat",
+        "required": true,
+        "description": "Applicant must meet the scheme's state condition (Gujarat).",
+        "sourceUrl": "https://www.gujarat.gov.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Confirm the state condition with the Gujarat health department."
+      },
+      {
+        "field": "beneficiaryCategory",
+        "operator": "in",
+        "value": [
+          "low-income",
+          "general",
+          "senior-citizen",
+          "worker-family"
+        ],
+        "required": true,
+        "description": "Family must fall in a category covered by the state scheme.",
+        "sourceUrl": "https://www.gujarat.gov.in/",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Confirm current covered categories and income ceilings with the state authority."
+      }
+    ],
+    "documents": [
+      "Gujarat residence proof",
+      "Income certificate (where applicable)",
+      "Family ID / ration card"
+    ],
+    "applicationSteps": [
+      "Check details on the Gujarat health department portal",
+      "Enrol / get card through designated centres",
+      "Avail cashless treatment at empanelled hospitals"
+    ],
+    "officialInfoUrl": "https://www.gujarat.gov.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.gujarat.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Income ceilings and covered procedures change; confirm with the official authority.",
+    "category": "state-health"
+  },
+  {
+    "id": "senior-health-cover",
+    "domain": "health-coverage",
+    "name": "Senior Citizen Health Support (PM-JAY 70+ expansion)",
+    "administeringAuthority": "National Health Authority (NHA)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Health cover for senior citizens aged 70 and above, as per the expanded cover announced by the Government of India."
+    },
+    "intendedFor": "Senior citizens covered under the expanded 70+ health-cover terms.",
+    "nextStep": "Confirm current 70+ enrolment terms on the NHA portal before relying on this record.",
+    "eligibilityRules": [
+      {
+        "field": "ageBand",
+        "operator": "equals",
+        "value": "60+",
+        "required": true,
+        "description": "Beneficiary age band must include senior citizens.",
+        "sourceUrl": "https://nha.gov.in/PM-JAY",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Confirm the current age criteria for the 70+ expansion on the NHA site."
+      },
+      {
+        "field": "beneficiaryCategory",
+        "operator": "in",
+        "value": [
+          "senior-citizen",
+          "low-income",
+          "general",
+          "worker-family"
+        ],
+        "required": false,
+        "description": "Open across categories for eligible senior citizens; confirm current terms.",
+        "sourceUrl": "https://nha.gov.in/PM-JAY",
+        "sourceCheckedAt": "2026-10-15",
+        "unknownNextStep": "Does not block this result; confirm category terms on the NHA site."
+      }
+    ],
+    "documents": [
+      "Age proof (Aadhaar / voter ID shown at verification — do not enter it here)",
+      "Mobile number for enrolment"
+    ],
+    "applicationSteps": [
+      "Check senior-citizen enrolment on the NHA portal",
+      "Complete verification at help desk",
+      "Use cover at empanelled hospitals"
+    ],
+    "officialInfoUrl": "https://nha.gov.in/PM-JAY",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://nha.gov.in/PM-JAY",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Terms of the 70+ expansion should be confirmed on the official NHA site before applying.",
+    "category": "senior-and-child"
+  },
+  {
+    "id": "startup-funding-credit-guarantee-scheme-for-startups-cgss",
+    "domain": "startup-funding",
+    "name": "Credit Guarantee Scheme for Startups (CGSS)",
+    "administeringAuthority": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "State"
+      ]
+    },
+    "benefit": {
+      "type": "loan",
+      "summary": "Credit guarantee cover that helps startups obtain bank loans without collateral or third-party guarantees."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [
+      "Credit guarantee coverage under this model would be either transaction-based or umbrella-based.",
+      "However, it may be noted that in case an NBFC subsequently becomes ineligible, due to a downgrade in the credit rating below BBB, the NBFC shall not be eligible for further guarantee cover till upgradation again to eligible category.",
+      "2 What is the quantum of assistance eligible for guarantee cover under the Scheme?",
+      "The maximum amount of debt (fund-based or non-fund-based facilities) eligible for guarantee cover under the Scheme has been revised to ₹20 crore per borrower."
+    ],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "credit-guarantee"
+  },
+  {
+    "id": "startup-funding-startup-india-fund-of-funds-2-0",
+    "domain": "startup-funding",
+    "name": "Startup India Fund of Funds 2.0",
+    "administeringAuthority": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "fund-of-funds",
+      "summary": "Fund of funds that invests in SEBI-registered alternative investment funds supporting startups."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.startupindia.gov.in/content/sih/en/fund-of-funds.html",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.startupindia.gov.in/content/sih/en/fund-of-funds.html",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "category": "fund-of-funds"
+  },
+  {
+    "id": "startup-funding-startup-india-regulatory-support",
+    "domain": "startup-funding",
+    "name": "Startup India Regulatory Support",
+    "administeringAuthority": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "advisory",
+      "summary": "Regulatory guidance and handholding support to help startups navigate government approvals."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.startupindia.gov.in/content/sih/en/regulatory-support.html",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.startupindia.gov.in/content/sih/en/regulatory-support.html",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "category": "advisory"
+  },
+  {
+    "id": "startup-funding-psb-loans-in-59-minutes",
+    "domain": "startup-funding",
+    "name": "PSB Loans in 59 Minutes",
+    "administeringAuthority": "Ministry of Finance, Department of Financial Services",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "loan",
+      "summary": "Public sector banks offer collateral-free business loans with a standardised, time-bound application process."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.financialservices.gov.in/psb-loans-in-59-minutes",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.financialservices.gov.in/psb-loans-in-59-minutes",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "category": "business-loan"
+  },
+  {
+    "id": "startup-funding-stand-up-india",
+    "domain": "startup-funding",
+    "name": "Stand-Up India",
+    "administeringAuthority": "Department of Financial Services, Ministry of Finance",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "loan",
+      "summary": "Bank loans for scheduled caste and scheduled tribe entrepreneurs in manufacturing and services."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.standupmitra.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.standupmitra.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "business-loan"
+  },
+  {
+    "id": "health-coverage-mukhyamantri-amrutum-yojana-ma-yojana-gujarat",
+    "domain": "health-coverage",
+    "name": "Mukhyamantri Amrutum Yojana (MA Yojana), Gujarat",
+    "administeringAuthority": "Health and Family Welfare Department, Government of Gujarat",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "Gujarat"
+      ]
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Cashless treatment support for eligible families in Gujarat at empanelled hospitals."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://ma.gujarat.gov.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://ma.gujarat.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "state-health"
+  },
+  {
+    "id": "health-coverage-mukhyamantri-amrutum-vatsalya-yojana-mav-gujarat",
+    "domain": "health-coverage",
+    "name": "Mukhyamantri Amrutum Vatsalya Yojana (MAV), Gujarat",
+    "administeringAuthority": "Health and Family Welfare Department, Government of Gujarat",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "Gujarat"
+      ]
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Cashless tertiary care cover extended to eligible beneficiaries in Gujarat."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://ma.gujarat.gov.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://ma.gujarat.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "senior-and-child"
+  },
+  {
+    "id": "health-coverage-ayushman-bharat-pm-jay-ab-pmjay-gujarat",
+    "domain": "health-coverage",
+    "name": "Ayushman Bharat PM-JAY (AB-PMJAY), Gujarat",
+    "administeringAuthority": "National Health Authority / Government of Gujarat",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "Gujarat"
+      ]
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Gujarat implementation portal for the national Ayushman Bharat health assurance scheme."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://ma.gujarat.gov.in/ABPMJAY.html",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://ma.gujarat.gov.in/ABPMJAY.html",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [
+      "o Approximately 10.74 crore identified families (approximately 50 crore beneficiaries) are entitled to get the scheme benefits in the Country.",
+      "o PMJAY beneficiaries will be able to move across borders and access services across the country through the provider network seamlessly."
+    ],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "state-health"
+  },
+  {
+    "id": "health-coverage-mahatma-jyotirao-phule-jan-arogya-yojana-mjpjy",
+    "domain": "health-coverage",
+    "name": "Mahatma Jyotirao Phule Jan Arogya Yojana (MJPJY)",
+    "administeringAuthority": "Government of Maharashtra",
+    "coverage": {
+      "type": "state",
+      "states": [
+        "Maharashtra"
+      ]
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Cashless health cover for eligible beneficiary families in Maharashtra."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.myscheme.gov.in/schemes/mjpjay",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mjpjay",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "category": "national-health"
+  },
+  {
+    "id": "health-coverage-ayushman-bharat-digital-mission-abdm",
+    "domain": "health-coverage",
+    "name": "Ayushman Bharat Digital Mission (ABDM)",
+    "administeringAuthority": "National Health Authority (NHA)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "National digital health infrastructure enabling Ayushman Bharat health records and services."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://abdm.gov.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://abdm.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "category": "digital-health"
+  },
+  {
+    "id": "health-coverage-employee-state-insurance-scheme-esic",
+    "domain": "health-coverage",
+    "name": "Employee State Insurance Scheme (ESIC)",
+    "administeringAuthority": "Employees State Insurance Corporation",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "Medical care and cash benefits for insured workers and their families."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://www.esic.gov.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.esic.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "employment-insurance"
+  },
+  {
+    "id": "health-coverage-national-health-benefit-package-pm-jay-hbp",
+    "domain": "health-coverage",
+    "name": "National Health Benefit Package (PM-JAY HBP)",
+    "administeringAuthority": "National Health Authority (NHA)",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "health-cover",
+      "summary": "The official package of health benefits covered under PM-JAY at empanelled hospitals."
+    },
+    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official page linked below",
+      "Read the eligibility and application conditions published there"
+    ],
+    "officialInfoUrl": "https://nha.gov.in/PM-JAY",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://nha.gov.in/PM-JAY",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
+    "documentedEligibility": [],
+    "category": "national-health"
+  },
+  {
+    "id": "startup-india-seed-fund-scheme-sisfs-smj9",
+    "domain": "startup-funding",
+    "name": "Startup India Seed Fund Scheme (SISFS)",
+    "administeringAuthority": "seedfund.startupindia.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "Financial assistance to startups for proof of concept, prototype development, product trials, market entry, and commercialization"
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://seedfund.startupindia.gov.in/",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://seedfund.startupindia.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "category": "seed-funding"
+  },
+  {
+    "id": "startup-india-scheme-8mxv",
+    "domain": "startup-funding",
+    "name": "Startup India Scheme",
+    "administeringAuthority": "www.startupindia.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "Under the Startup India initiative, eligible companies can get recognised as Startups by DPIIT in order to access a host of tax benefits, ..."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.startupindia.gov.in/content/sih/en/startup-scheme.html",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.startupindia.gov.in/content/sih/en/startup-scheme.html",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [
+      "Your company must meet the following criteria to be considered eligible for DPIIT startup recognition.",
+      "Eligibility The entity should be a DPIIT recognised startup Only Private Limited Companies or Limited Liability Partnerships are eligible for tax exemption under Section 80IAC The startup should have been incorporated after 1st April, 2016 4 D."
+    ],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "startup-support"
+  },
+  {
+    "id": "esic-benefits-employees-state-insuran-0v2y",
+    "domain": "health-coverage",
+    "name": "ESIC Benefits | Employees' State Insurance Corporation",
+    "administeringAuthority": "mcfaridabad.esic.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "Rate of benefit: Sickness Benefit is paid as cash compensation at the rate of 70 per cent of wages. Duration: It is payable for periods of certified sickness, ..."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://mcfaridabad.esic.gov.in/information-benefits",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://mcfaridabad.esic.gov.in/information-benefits",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [
+      "No double claim: If you are eligible for maternity benefit from ESIC, you cannot also claim it from your employer.",
+      "Adopting mothers and commissioning mothers Insured woman shall be entitled to twelve weeks of maternity benefit from the date the child is handed over to the commissioning mother after birth or adopting mother, as the case may be.",
+      "Beneficiaries are entitled to reasonable medical, surgical and obstetric treatment.",
+      "Family Members of Insured Persons In all implemented areas, IPs are entitled to the medical care detailed above."
+    ],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "employment-insurance"
+  },
+  {
+    "id": "esic-finance-employees-state-insuranc-md08",
+    "domain": "health-coverage",
+    "name": "ESIC Finance | Employees' State Insurance Corporation",
+    "administeringAuthority": "www.srokalaburagi.esic.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "As of now, covered employees contribute 0.75% of the wages, whereas, the employers contribute 3.25% of the wages, payable to their employees. Employees earning ..."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.srokalaburagi.esic.gov.in/ro-sro-finance",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.srokalaburagi.esic.gov.in/ro-sro-finance",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "category": "employment-insurance"
+  },
+  {
+    "id": "esic-contribution-employees-state-ins-0n23",
+    "domain": "health-coverage",
+    "name": "ESIC Contribution | Employees' State Insurance Corporation",
+    "administeringAuthority": "jaipurhospital.esic.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "There are two contribution periods each of six months duration and two corresponding benefit periods also of six months duration. Medical Helpline 1800-11-3839"
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://jaipurhospital.esic.gov.in/ro-sro-contribution",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://jaipurhospital.esic.gov.in/ro-sro-contribution",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "employment-insurance"
+  },
+  {
+    "id": "esic-medical-benefit-healthcare-servic-cly1",
+    "domain": "health-coverage",
+    "name": "ESIC Medical Benefit | Healthcare Services for Insured ...",
+    "administeringAuthority": "srovisakhapatnam.esic.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "Beneficiaries are entitled to reasonable medical, surgical and obstetric treatment."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://srovisakhapatnam.esic.gov.in/medicals-benefit",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://srovisakhapatnam.esic.gov.in/medicals-benefit",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [
+      "Beneficiaries are entitled to reasonable medical, surgical and obstetric treatment.",
+      "Family Members of Insured Persons In all implemented areas, IPs are entitled to the medical care detailed above.",
+      "Family members of an IP are eligible for full medical care, i.e., all facilities as for IPs, including hospitalisation.",
+      "In-Patient Treatment IPs in all areas, and their family members in areas with \"Full\" medical care, are entitled to hospitalisation."
+    ],
+    "eligibilityExtractedAt": "2026-10-15",
+    "category": "employment-insurance"
+  },
+  {
+    "id": "chief-minister-s-comprehensive-health-in-kwr0",
+    "domain": "health-coverage",
+    "name": "Chief Minister's Comprehensive Health Insurance Scheme",
+    "administeringAuthority": "www.myscheme.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "Health Insurance. Public And Private Sector Hospitals. Check Eligibility. Details. Benefits. Eligibility. Exclusions. Application Process. Documents Required."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.myscheme.gov.in/schemes/cmchis",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/cmchis",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "category": "health-insurance"
+  },
+  {
+    "id": "mukhmantri-sehat-bima-yojana-5fv8",
+    "domain": "health-coverage",
+    "name": "Mukhmantri Sehat Bima Yojana",
+    "administeringAuthority": "www.myscheme.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "AB PM-JAY MMSBY will provide financial protection to 65% population of state of Punjab. It is entitlement based cashless Health Insurance cover. Under this ..."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.myscheme.gov.in/schemes/mmsby",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/mmsby",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "category": "health-insurance"
+  },
+  {
+    "id": "niramaya-health-insurance-scheme-b726",
+    "domain": "health-coverage",
+    "name": "Niramaya Health Insurance Scheme",
+    "administeringAuthority": "www.myscheme.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "The objective of the scheme is to provide affordable Health Insurance to persons with Autism, Cerebral Palsy, Mental Retardation and Multiple Disabilities. The ..."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.myscheme.gov.in/schemes/nhis",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/nhis",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "category": "health-insurance"
+  },
+  {
+    "id": "pradhan-mantri-suraksha-bima-yojana-4ab4",
+    "domain": "health-coverage",
+    "name": "Pradhan Mantri Suraksha Bima Yojana",
+    "administeringAuthority": "www.myscheme.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "An Accident Insurance Scheme offering … be restricted to Rs. 2 lakh. On attaining age 70 years (age nearer birth day)."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.myscheme.gov.in/schemes/pmsby",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/pmsby",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "category": "health-insurance"
+  },
+  {
+    "id": "mukhya-mantri-himachal-health-care-schem-dvl4",
+    "domain": "health-coverage",
+    "name": "Mukhya Mantri Himachal Health Care Scheme-HIMCARE",
+    "administeringAuthority": "www.myscheme.gov.in",
+    "coverage": {
+      "type": "central",
+      "states": []
+    },
+    "benefit": {
+      "type": "scheme",
+      "summary": "Health Insurance. Check Eligibility. Details. Mukhya Mantri Himachal Health Care Scheme-HIMCARE is a health insurance scheme under the Department of Health ..."
+    },
+    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
+    "nextStep": "Open the official page and confirm eligibility before applying.",
+    "eligibilityRules": [],
+    "documents": [],
+    "applicationSteps": [
+      "Open the official source",
+      "Read the published eligibility and application conditions"
+    ],
+    "officialInfoUrl": "https://www.myscheme.gov.in/schemes/himcare",
+    "officialApplicationUrl": null,
+    "sources": [
+      {
+        "url": "https://www.myscheme.gov.in/schemes/himcare",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "verificationStatus": "needs-review",
+    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
+    "documentedEligibility": [],
+    "category": "state-health"
+  }
+]

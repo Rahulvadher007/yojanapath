@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Results — YojanaPath</title>
+<link rel="stylesheet" href="css/tokens.css?v=10"><link rel="stylesheet" href="css/base.css?v=10"><link rel="stylesheet" href="css/layout.css?v=10"><link rel="stylesheet" href="css/components.css?v=10">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+<a class="brand" href="index.html"><span class="brand-mark">Y</span>YojanaPath</a>
+<button id="menuBtn" class="btn ghost" aria-label="Open menu" aria-expanded="false"></button>
+<nav class="main" aria-label="Main"><a class="navlink" href="index.html">Home</a><a class="navlink" href="saved.html">Saved</a><a class="btn nav-cta" href="questionnaire.html">Edit answers</a></nav>
+</div></header>
+<main id="main" class="wrap">
+<div class="res-head">
+<h1 class="page-title">Your potential matches</h1>
+<p class="res-sub">Potential match = all known mandatory rules pass. Needs info = something missing. Does not match = a known rule failed. Not an official eligibility decision.</p>
+<p class="res-actions"><a id="editBtn" class="btn ghost edit-btn" href="questionnaire.html"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.5.5L4 10z"/><path d="M10 4l2 2"/></svg>Edit answers</a></p>
+</div>
+<div class="toolbar">
+<label>Match status <select id="fStatus"><option value="all">All</option><option value="potential-match">Potential match</option><option value="needs-info">Needs more info</option><option value="does-not-match">Does not match</option></select></label>
+<label>Benefit <select id="fBenefit"><option value="all">All</option><option value="seed-funding">Seed funding</option><option value="grant">Grant</option><option value="loan">Loan</option><option value="health-cover">Health cover</option></select></label>
+<label>Coverage <select id="fCoverage"><option value="all">All</option><option value="central">Central</option><option value="state">State</option></select></label>
+<label>Sort <select id="sort"><option value="relevance">Relevance</option><option value="name">Name</option></select></label>
+</div>
+<p class="toolbar-note" id="filterNote">Filters apply to the schemes shown below.</p>
+<p id="status" class="meta" role="status" aria-live="polite"></p>
+<div id="results" class="grid results" aria-live="polite"></div>
+</main>
+<footer class="site"><div class="wrap">Confirm with official sources before applying.</div></footer>
+<div id="cmpOverlay" class="cmp-overlay"></div>
+<aside id="cmpDrawer" class="cmp-drawer" role="dialog" aria-modal="true" aria-labelledby="cmpTitle" aria-hidden="true">
+  <header class="cmp-head">
+    <div class="cmp-head-main">
+      <h2 id="cmpTitle">Compare schemes</h2>
+      <p class="cmp-sub"></p>
+    </div>
+    <button id="cmpClose" class="icon-btn" aria-label="Close compare panel">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+    </button>
+  </header>
+  <div id="cmpBody" class="cmp-body"></div>
+  <footer id="cmpFoot" class="cmp-foot"></footer>
+</aside>
+<script src="js/app.js?v=10"></script><script src="js/dropdown.js?v=10"></script>
+<script src="js/api.js?v=10"></script>
+<script src="js/storage.js?v=10"></script>
+<script src="js/rules.js?v=10"></script>
+<script src="js/compare-ui.js?v=10"></script><script src="js/results.js?v=10"></script><script src="js/ai.js?v=10"></script>
+</body>
+</html>

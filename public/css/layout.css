@@ -1,0 +1,263 @@
+.wrap {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px
+}
+
+/* top-nav — 64px, cream floor, hairline base */
+header.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--colors-canvas);
+    border-bottom: 1px solid var(--colors-hairline)
+}
+
+header.site .wrap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 64px;
+    padding: 0 24px
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--colors-ink);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.2px
+}
+
+.brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: var(--colors-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600
+}
+
+nav.main {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    align-items: center
+}
+
+nav.main a:not(.btn) {
+    color: var(--colors-ink);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: var(--rounded-sm);
+    text-decoration: none;
+    transition: color .18s ease, background-color .18s ease
+}
+
+nav.main a:not(.btn):hover {
+    color: var(--colors-primary);
+    background: var(--colors-canvas-soft)
+}
+
+nav.main a[aria-current="page"]:not(.btn) {
+    color: var(--colors-primary)
+}
+
+.nav-cta {
+    margin-left: 8px;
+    padding-inline: 16px;
+    color: var(--colors-on-primary)
+}
+
+.nav-arrow {
+    flex: none;
+    transition: transform .18s ease
+}
+
+.nav-cta:hover .nav-arrow {
+    transform: translateX(2px)
+}
+
+#menuBtn {
+    display: none
+}
+
+/* bands — editorial rhythm on cream, white cards, ink inversion */
+.band {
+    padding: var(--spacing-section) 0
+}
+
+.band-canvas {
+    background: var(--colors-canvas)
+}
+
+.band-card {
+    background: var(--colors-surface-card)
+}
+
+.band-soft {
+    background: var(--colors-canvas-soft)
+}
+
+.band-ink {
+    background: var(--colors-ink);
+    color: var(--colors-canvas)
+}
+
+.band-ink h1,
+.band-ink h2,
+.band-ink h3,
+.band-ink h4 {
+    color: var(--colors-canvas)
+}
+
+.hero {
+    padding: var(--spacing-section) 0 48px
+}
+
+.hero-grid {
+    display: grid;
+    gap: 32px;
+    align-items: center
+}
+
+@media(min-width:1024px) {
+    .hero-grid {
+        grid-template-columns: 1.05fr .95fr
+    }
+}
+
+.grid {
+    display: grid;
+    gap: 16px
+}
+
+.grid.cards {
+    grid-template-columns: 1fr
+}
+
+@media(min-width:640px) {
+    .grid.cards {
+        grid-template-columns: 1fr 1fr
+    }
+}
+
+@media(min-width:1024px) {
+    .grid.cards.c3 {
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+.grid.results {
+    grid-template-columns: 1fr
+}
+
+@media(min-width:768px) {
+    .grid.results {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media(min-width:1100px) {
+    .grid.results {
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px
+}
+
+@media(max-width:639px) {
+    .stats {
+        grid-template-columns: 1fr
+    }
+}
+
+.stat b {
+    display: block;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -.325px;
+    color: var(--colors-ink)
+}
+
+footer.site {
+    background: var(--colors-canvas);
+    border-top: 1px solid var(--colors-hairline)
+}
+
+footer.site .wrap {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px
+}
+
+.footer-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 24px;
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+.footer-note {
+    margin: 0;
+    flex: 1 1 220px;
+    font-size: 13px;
+    color: var(--colors-body)
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 20px
+}
+
+.footer-links a {
+    font-size: 14px;
+    color: var(--colors-body);
+    text-decoration: none;
+    padding: 4px 0;
+    white-space: nowrap
+}
+
+.footer-links a:hover {
+    color: var(--colors-primary)
+}
+
+@media(max-width:767px) {
+    nav.main {
+        display: none
+    }
+
+    nav.main.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 72px;
+        right: 16px;
+        background: var(--colors-surface-card);
+        border: 1px solid var(--colors-hairline);
+        border-radius: var(--rounded-lg);
+        padding: 12px;
+        min-width: 200px
+    }
+
+    #menuBtn {
+        display: inline-flex
+    }
+}

@@ -1,0 +1,24 @@
+# Render Blueprint — YojanaPath
+# Deploy: https://dashboard.render.com/blueprint/new
+# Secrets marked `sync: false` must be filled in the Render dashboard.
+services:
+  - type: web
+    name: yojanapath
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      # Server-side only. Never exposed to the browser.
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: SERPAPI_KEY
+        sync: false
+      # Admin writes to data/schemes.json. The deployed filesystem is ephemeral and
+      # unauthenticated, so this stays off. Set to true only for local development.
+      - key: ADMIN_ENABLED
+        value: "false"
