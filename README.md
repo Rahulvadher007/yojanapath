@@ -91,8 +91,8 @@ Other limitations:
   server-side so responses never mix languages.
 - localStorage keys are prefixed `yojanapath.` (lowercase) and hold IDs and drafts only — never
   Aadhaar, bank or medical data.
-- Testing is manual: `tests/rules-cases.md` and `tests/sample-profiles.json` cover met / failed /
-  missing, central cross-state, Gujarat out-of-state, invalid input, empty data and bad operators.
+- No automated test suite. Verify changes by walking the demo flow in `docs/demo-script.md`
+  against both domains, plus `/api/health` returning 200.
 
 ## Provenance model
 
@@ -126,7 +126,7 @@ linked.
 
 1. `/admin.html` → search for the scheme → open the original source.
 2. Hand-verify, then edit `data/schemes.json` and update `lastVerified`.
-3. Re-run the manual cases in `tests/rules-cases.md`.
+3. Commit the updated `data/schemes.json` and redeploy.
 4. For public deployment, disable or remove `admin.html` and the `/api/admin/*` routes.
 
 Filling the 23 incomplete records: `harvest.js`, `fetch-eligibility.js` and `bulk-ingest.js`
@@ -197,7 +197,6 @@ public/
     compare-ui.js         compare drawer and feature matrix
     checklist.js / admin.js / dropdown.js / app.js
 docs/                     spec, demo script
-tests/                    manual rule cases and sample profiles
 ```
 
 `public/js/live.js` and `GET /api/search/live` remain in the codebase but are no longer loaded by
