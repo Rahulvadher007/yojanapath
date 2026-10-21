@@ -159,6 +159,5 @@ public/
     checklist.js          Interactive scheme document checklist
     dropdown.js           Accessible custom select dropdown
     app.js                Shared navigation, back button, escaping, skeletons
-    live.js               Official source search integration
 docs/                     Architecture specs, viva preparation, demo scripts
 ```
