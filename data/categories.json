@@ -2,6 +2,7 @@
   {
     "id": "startup-funding",
     "title": "Startup Funding Support",
+    "shortTitle": "Startup funding",
     "tagline": "Explore funding, loans, subsidies, and support for your business journey.",
     "description": "Answer a few questions about your stage, state and purpose. We check known scheme rules and explain each result.",
     "questionsAsked": ["State", "Applicant type", "Business stage", "Funding purpose", "DPIIT recognition status"]
@@ -9,6 +10,7 @@
   {
     "id": "health-coverage",
     "title": "Health Coverage for Me & My Family",
+    "shortTitle": "Health coverage",
     "tagline": "Explore government health coverage and healthcare assistance for individuals and families.",
     "description": "Answer a few questions about your state, age band and beneficiary category. We show potential matches and what is still unknown.",
     "questionsAsked": ["State", "Age band", "Beneficiary category", "Existing government health coverage"]

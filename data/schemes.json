@@ -72,6 +72,11 @@
         "url": "https://www.startupindia.gov.in/content/sih/en/government-schemes/seed-fund-scheme.html",
         "sourceType": "official",
         "checkedAt": "2026-10-15"
+      },
+      {
+        "url": "https://seedfund.startupindia.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
       }
     ],
     "lastVerified": "2026-10-15",
@@ -361,11 +366,16 @@
       "Enrol / get card through designated centres",
       "Avail cashless treatment at empanelled hospitals"
     ],
-    "officialInfoUrl": "https://www.gujarat.gov.in/",
+    "officialInfoUrl": "https://ma.gujarat.gov.in/",
     "officialApplicationUrl": null,
     "sources": [
       {
         "url": "https://www.gujarat.gov.in/",
+        "sourceType": "official",
+        "checkedAt": "2026-10-15"
+      },
+      {
+        "url": "https://ma.gujarat.gov.in/",
         "sourceType": "official",
         "checkedAt": "2026-10-15"
       }
@@ -627,45 +637,6 @@
     "category": "business-loan"
   },
   {
-    "id": "health-coverage-mukhyamantri-amrutum-yojana-ma-yojana-gujarat",
-    "domain": "health-coverage",
-    "name": "Mukhyamantri Amrutum Yojana (MA Yojana), Gujarat",
-    "administeringAuthority": "Health and Family Welfare Department, Government of Gujarat",
-    "coverage": {
-      "type": "state",
-      "states": [
-        "Gujarat"
-      ]
-    },
-    "benefit": {
-      "type": "health-cover",
-      "summary": "Cashless treatment support for eligible families in Gujarat at empanelled hospitals."
-    },
-    "intendedFor": "Conditions for this scheme have not been entered yet. Open the official source to check who can apply.",
-    "nextStep": "Open the official page and confirm eligibility before applying.",
-    "eligibilityRules": [],
-    "documents": [],
-    "applicationSteps": [
-      "Open the official page linked below",
-      "Read the eligibility and application conditions published there"
-    ],
-    "officialInfoUrl": "https://ma.gujarat.gov.in/",
-    "officialApplicationUrl": null,
-    "sources": [
-      {
-        "url": "https://ma.gujarat.gov.in/",
-        "sourceType": "official",
-        "checkedAt": "2026-10-15"
-      }
-    ],
-    "lastVerified": "2026-10-15",
-    "verificationStatus": "needs-review",
-    "notes": "Record added from the official portal listing. Eligibility conditions are not yet stored, so this is discovery-only and must be verified on the official page.",
-    "documentedEligibility": [],
-    "eligibilityExtractedAt": "2026-10-15",
-    "category": "state-health"
-  },
-  {
     "id": "health-coverage-mukhyamantri-amrutum-vatsalya-yojana-mav-gujarat",
     "domain": "health-coverage",
     "name": "Mukhyamantri Amrutum Vatsalya Yojana (MAV), Gujarat",
@@ -894,42 +865,6 @@
     "category": "national-health"
   },
   {
-    "id": "startup-india-seed-fund-scheme-sisfs-smj9",
-    "domain": "startup-funding",
-    "name": "Startup India Seed Fund Scheme (SISFS)",
-    "administeringAuthority": "seedfund.startupindia.gov.in",
-    "coverage": {
-      "type": "central",
-      "states": []
-    },
-    "benefit": {
-      "type": "scheme",
-      "summary": "Financial assistance to startups for proof of concept, prototype development, product trials, market entry, and commercialization"
-    },
-    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
-    "nextStep": "Open the official page and confirm eligibility before applying.",
-    "eligibilityRules": [],
-    "documents": [],
-    "applicationSteps": [
-      "Open the official source",
-      "Read the published eligibility and application conditions"
-    ],
-    "officialInfoUrl": "https://seedfund.startupindia.gov.in/",
-    "officialApplicationUrl": null,
-    "sources": [
-      {
-        "url": "https://seedfund.startupindia.gov.in/",
-        "sourceType": "official",
-        "checkedAt": "2026-10-15"
-      }
-    ],
-    "lastVerified": "2026-10-15",
-    "verificationStatus": "needs-review",
-    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
-    "documentedEligibility": [],
-    "category": "seed-funding"
-  },
-  {
     "id": "startup-india-scheme-8mxv",
     "domain": "startup-funding",
     "name": "Startup India Scheme",
@@ -968,162 +903,6 @@
     ],
     "eligibilityExtractedAt": "2026-10-15",
     "category": "startup-support"
-  },
-  {
-    "id": "esic-benefits-employees-state-insuran-0v2y",
-    "domain": "health-coverage",
-    "name": "ESIC Benefits | Employees' State Insurance Corporation",
-    "administeringAuthority": "mcfaridabad.esic.gov.in",
-    "coverage": {
-      "type": "central",
-      "states": []
-    },
-    "benefit": {
-      "type": "scheme",
-      "summary": "Rate of benefit: Sickness Benefit is paid as cash compensation at the rate of 70 per cent of wages. Duration: It is payable for periods of certified sickness, ..."
-    },
-    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
-    "nextStep": "Open the official page and confirm eligibility before applying.",
-    "eligibilityRules": [],
-    "documents": [],
-    "applicationSteps": [
-      "Open the official source",
-      "Read the published eligibility and application conditions"
-    ],
-    "officialInfoUrl": "https://mcfaridabad.esic.gov.in/information-benefits",
-    "officialApplicationUrl": null,
-    "sources": [
-      {
-        "url": "https://mcfaridabad.esic.gov.in/information-benefits",
-        "sourceType": "official",
-        "checkedAt": "2026-10-15"
-      }
-    ],
-    "lastVerified": "2026-10-15",
-    "verificationStatus": "needs-review",
-    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
-    "documentedEligibility": [
-      "No double claim: If you are eligible for maternity benefit from ESIC, you cannot also claim it from your employer.",
-      "Adopting mothers and commissioning mothers Insured woman shall be entitled to twelve weeks of maternity benefit from the date the child is handed over to the commissioning mother after birth or adopting mother, as the case may be.",
-      "Beneficiaries are entitled to reasonable medical, surgical and obstetric treatment.",
-      "Family Members of Insured Persons In all implemented areas, IPs are entitled to the medical care detailed above."
-    ],
-    "eligibilityExtractedAt": "2026-10-15",
-    "category": "employment-insurance"
-  },
-  {
-    "id": "esic-finance-employees-state-insuranc-md08",
-    "domain": "health-coverage",
-    "name": "ESIC Finance | Employees' State Insurance Corporation",
-    "administeringAuthority": "www.srokalaburagi.esic.gov.in",
-    "coverage": {
-      "type": "central",
-      "states": []
-    },
-    "benefit": {
-      "type": "scheme",
-      "summary": "As of now, covered employees contribute 0.75% of the wages, whereas, the employers contribute 3.25% of the wages, payable to their employees. Employees earning ..."
-    },
-    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
-    "nextStep": "Open the official page and confirm eligibility before applying.",
-    "eligibilityRules": [],
-    "documents": [],
-    "applicationSteps": [
-      "Open the official source",
-      "Read the published eligibility and application conditions"
-    ],
-    "officialInfoUrl": "https://www.srokalaburagi.esic.gov.in/ro-sro-finance",
-    "officialApplicationUrl": null,
-    "sources": [
-      {
-        "url": "https://www.srokalaburagi.esic.gov.in/ro-sro-finance",
-        "sourceType": "official",
-        "checkedAt": "2026-10-15"
-      }
-    ],
-    "lastVerified": "2026-10-15",
-    "verificationStatus": "needs-review",
-    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
-    "category": "employment-insurance"
-  },
-  {
-    "id": "esic-contribution-employees-state-ins-0n23",
-    "domain": "health-coverage",
-    "name": "ESIC Contribution | Employees' State Insurance Corporation",
-    "administeringAuthority": "jaipurhospital.esic.gov.in",
-    "coverage": {
-      "type": "central",
-      "states": []
-    },
-    "benefit": {
-      "type": "scheme",
-      "summary": "There are two contribution periods each of six months duration and two corresponding benefit periods also of six months duration. Medical Helpline 1800-11-3839"
-    },
-    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
-    "nextStep": "Open the official page and confirm eligibility before applying.",
-    "eligibilityRules": [],
-    "documents": [],
-    "applicationSteps": [
-      "Open the official source",
-      "Read the published eligibility and application conditions"
-    ],
-    "officialInfoUrl": "https://jaipurhospital.esic.gov.in/ro-sro-contribution",
-    "officialApplicationUrl": null,
-    "sources": [
-      {
-        "url": "https://jaipurhospital.esic.gov.in/ro-sro-contribution",
-        "sourceType": "official",
-        "checkedAt": "2026-10-15"
-      }
-    ],
-    "lastVerified": "2026-10-15",
-    "verificationStatus": "needs-review",
-    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
-    "documentedEligibility": [],
-    "eligibilityExtractedAt": "2026-10-15",
-    "category": "employment-insurance"
-  },
-  {
-    "id": "esic-medical-benefit-healthcare-servic-cly1",
-    "domain": "health-coverage",
-    "name": "ESIC Medical Benefit | Healthcare Services for Insured ...",
-    "administeringAuthority": "srovisakhapatnam.esic.gov.in",
-    "coverage": {
-      "type": "central",
-      "states": []
-    },
-    "benefit": {
-      "type": "scheme",
-      "summary": "Beneficiaries are entitled to reasonable medical, surgical and obstetric treatment."
-    },
-    "intendedFor": "Eligibility conditions have not been entered yet. Open the official source to check who can apply.",
-    "nextStep": "Open the official page and confirm eligibility before applying.",
-    "eligibilityRules": [],
-    "documents": [],
-    "applicationSteps": [
-      "Open the official source",
-      "Read the published eligibility and application conditions"
-    ],
-    "officialInfoUrl": "https://srovisakhapatnam.esic.gov.in/medicals-benefit",
-    "officialApplicationUrl": null,
-    "sources": [
-      {
-        "url": "https://srovisakhapatnam.esic.gov.in/medicals-benefit",
-        "sourceType": "official",
-        "checkedAt": "2026-10-15"
-      }
-    ],
-    "lastVerified": "2026-10-15",
-    "verificationStatus": "needs-review",
-    "notes": "Added from admin review on 2026-10-15. Conditions not yet transcribed — discovery only.",
-    "documentedEligibility": [
-      "Beneficiaries are entitled to reasonable medical, surgical and obstetric treatment.",
-      "Family Members of Insured Persons In all implemented areas, IPs are entitled to the medical care detailed above.",
-      "Family members of an IP are eligible for full medical care, i.e., all facilities as for IPs, including hospitalisation.",
-      "In-Patient Treatment IPs in all areas, and their family members in areas with \"Full\" medical care, are entitled to hospitalisation."
-    ],
-    "eligibilityExtractedAt": "2026-10-15",
-    "category": "employment-insurance"
   },
   {
     "id": "chief-minister-s-comprehensive-health-in-kwr0",

@@ -164,7 +164,14 @@ function handleAdminAdd(body, res) {
   if (!isOfficial(host)) return sendJson(res, 400, { error: 'Not an official government domain: ' + host });
   const db = readSchemes();
   if (!db) return sendJson(res, 500, { error: 'Cannot read schemes.json' });
-  if (db.some((s) => s.officialInfoUrl === url)) return sendJson(res, 409, { error: 'This source is already in the dataset' });
+  // A single official site can host several distinct schemes — ma.gujarat.gov.in carries
+  // both the MA Yojana and the MAV Yojana, and nha.gov.in carries PM-JAY and its Health
+  // Benefit Package. A shared URL is therefore not proof of a duplicate; the same scheme
+  // name on the same URL is.
+  const schemeKey = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  if (db.some((s) => s.officialInfoUrl === url && schemeKey(s.name) === schemeKey(name))) {
+    return sendJson(res, 409, { error: 'This scheme is already in the dataset' });
+  }
 
   const today = new Date().toISOString().slice(0, 10);
   const id = slugify(name.slice(0, 40)) + '-' + Math.random().toString(36).slice(2, 6);

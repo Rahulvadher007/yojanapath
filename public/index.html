@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>YojanaPath — Find the support that fits your situation</title>
-<link rel="stylesheet" href="css/tokens.css?v=10"><link rel="stylesheet" href="css/base.css?v=10"><link rel="stylesheet" href="css/layout.css?v=10"><link rel="stylesheet" href="css/components.css?v=10">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="css/tokens.css?v=11"><link rel="stylesheet" href="css/base.css?v=11"><link rel="stylesheet" href="css/layout.css?v=11"><link rel="stylesheet" href="css/components.css?v=11">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,9 +40,9 @@
 </div></section>
 <section class="band band-canvas" style="padding-top:0"><div class="wrap">
 <dl class="factbar">
-<div class="fact"><dt>Pathways</dt><dd>2</dd><p>Startup funding · Health coverage</p></div>
-<div class="fact"><dt>Schemes in the dataset</dt><dd>6</dd><p>Each one carries source links and check dates</p></div>
-<div class="fact"><dt>Records verified</dt><dd>2<span class="of"> of 6</span></dd><p>The remainder are marked awaiting review</p></div>
+<div class="fact"><dt>Pathways</dt><dd id="factPathways">2</dd><p id="factPathwaysNote">Startup funding · Health coverage</p></div>
+<div class="fact"><dt>Schemes in the dataset</dt><dd id="factSchemes">6</dd><p>Each one carries source links and check dates</p></div>
+<div class="fact"><dt>Records verified</dt><dd id="factVerified">2<span class="of"> of 6</span></dd><p>The remainder are marked awaiting review</p></div>
 </dl>
 <p class="fact-note">Potential matches only — the scheme authority makes every eligibility decision.</p>
 </div></section>
@@ -88,6 +87,35 @@
 <a href="admin.html">Admin</a>
 </nav>
 </div></footer>
-<script src="js/app.js?v=10"></script><script src="js/dropdown.js?v=10"></script>
+<script src="js/app.js?v=11"></script><script src="js/dropdown.js?v=11"></script>
+<script src="js/api.js?v=11"></script>
+<script>
+  // Counts are read from the live dataset so this bar can never go stale again.
+  (function () {
+    YPApi.schemes().then(function (list) {
+      list = list || [];
+      var fs = document.getElementById('factSchemes');
+      if (fs) fs.textContent = list.length;
+      var v = list.filter(function (s) { return s.verificationStatus === 'verified'; }).length;
+      var fv = document.getElementById('factVerified');
+      if (fv) fv.innerHTML = v + '<span class="of"> of ' + list.length + '</span>';
+    }).catch(function () {
+      var fs = document.getElementById('factSchemes');
+      if (fs) fs.textContent = 'Unavailable';
+      var fv = document.getElementById('factVerified');
+      if (fv) fv.textContent = 'Unavailable';
+    });
+    YPApi.categories().then(function (c) {
+      c = c || [];
+      var fp = document.getElementById('factPathways');
+      if (fp) fp.textContent = c.length;
+      var fpn = document.getElementById('factPathwaysNote');
+      if (fpn) fpn.textContent = c.map(function (x) { return x.shortTitle || x.title; }).join(' · ');
+    }).catch(function () {
+      var fp = document.getElementById('factPathways');
+      if (fp) fp.textContent = '—';
+    });
+  })();
+</script>
 </body>
 </html>

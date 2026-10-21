@@ -1,24 +1,52 @@
 // Checklist generated from scheme documents + steps, persisted per scheme.
-(function ($, g) {
-  $(function () {
-    if (!$('#checklist').length) return;
+(function (g) {
+  function onReady(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function () {
+    var checklistEl = document.getElementById('checklist');
+    if (!checklistEl) return;
+    var statusEl = document.getElementById('status');
     var id = new URLSearchParams(location.search).get('id');
-    $('#status').text('Loading checklist…');
-    $('#checklist').html(g.ypSkel(1)).attr('aria-busy', 'true');
-    g.YPApi.schemes().done(function (data) {
-      $('#checklist').removeAttr('aria-busy');
+    if (statusEl) statusEl.textContent = 'Loading checklist…';
+    checklistEl.innerHTML = g.ypSkel(1);
+    checklistEl.setAttribute('aria-busy', 'true');
+    g.YPApi.schemes().then(function (data) {
+      checklistEl.removeAttribute('aria-busy');
       var s = (data || []).find(function (x) { return x.id === id; });
-      if (!s) { $('#checklist').empty(); $('#status').text('Scheme not found.'); return; }
-      $('#status').text('');
+      if (!s) {
+        checklistEl.innerHTML = '';
+        if (statusEl) statusEl.textContent = 'Scheme not found.';
+        return;
+      }
+      if (statusEl) statusEl.textContent = '';
       var items = (s.documents || []).map(function (d) { return 'Document: ' + d; }).concat((s.applicationSteps || []).map(function (d) { return 'Step: ' + d; }));
       var done = g.YPStore.getCheck(id);
-      $('#clistTitle').text('Checklist — ' + s.name);
-      $('#checklist').html('<ul class="checklist card">' + items.map(function (t, i) {
+      var titleEl = document.getElementById('clistTitle');
+      if (titleEl) titleEl.textContent = 'Checklist — ' + s.name;
+      checklistEl.innerHTML = '<ul class="checklist card">' + items.map(function (t, i) {
         return '<li><label><input type="checkbox" data-i="' + i + '"' + (done[i] ? ' checked' : '') + '> ' + g.esc(t) + '</label></li>';
-      }).join('') + '</ul><p id="prog" class="meta"></p><p class="meta">Commonly required by this scheme record — confirm with the official authority. Not exhaustive unless verified.</p>');
-      function prog() { var n = $('#checklist input:checked').length; $('#prog').text(n + ' of ' + items.length + ' done'); }
-      $('#checklist').on('change', 'input', function () { done[$(this).attr('data-i')] = this.checked; g.YPStore.setCheck(id, done); prog(); });
+      }).join('') + '</ul><p id="prog" class="meta"></p><p class="meta">Commonly required by this scheme record — confirm with the official authority. Not exhaustive unless verified.</p>';
+      function prog() {
+        var n = checklistEl.querySelectorAll('input:checked').length;
+        var progEl = document.getElementById('prog');
+        if (progEl) progEl.textContent = n + ' of ' + items.length + ' done';
+      }
+      checklistEl.addEventListener('change', function (e) {
+        var inp = e.target.closest('input[data-i]');
+        if (inp) {
+          done[inp.getAttribute('data-i')] = inp.checked;
+          g.YPStore.setCheck(id, done);
+          prog();
+        }
+      });
       prog();
-    }).fail(function () { $('#checklist').empty().removeAttr('aria-busy'); $('#status').text('Could not load checklist. Check the server is running and retry.'); });
+    }).catch(function () {
+      checklistEl.innerHTML = '';
+      checklistEl.removeAttribute('aria-busy');
+      if (statusEl) statusEl.textContent = 'Could not load checklist. Check the server is running and retry.';
+    });
   });
-})(jQuery, window);
+})(window);

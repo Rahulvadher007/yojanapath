@@ -1,7 +1,7 @@
 // Branded dropdown for pointer devices. Keeps the native <select> as the value
 // holder (so existing change handlers keep working) and layers a styled listbox
 // on top. Touch devices keep the native picker, which is better on mobile.
-(function ($, g) {
+(function (g) {
   var esc = g.esc || function (s) { return String(s == null ? '' : s); };
   var CARET = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
   var canHover = function () { return window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches; };
@@ -64,7 +64,7 @@
     function syncLabel() {
       var i = selectedIndex();
       trigger.querySelector('.dd-value').textContent = i > -1 ? items[i].textContent : '—';
-      items.forEach(function (li, n) {
+      items.forEach(function (li) {
         var on = li.dataset.value === sel.value;
         li.setAttribute('aria-selected', on ? 'true' : 'false');
         li.classList.toggle('is-selected', on);
@@ -135,13 +135,18 @@
   }
 
   function enhanceAll(root) {
-    $$('select', root).forEach(enhance);
+    queryAll('select', root).forEach(enhance);
   }
-  function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function queryAll(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
   g.YPDropdown = { enhanceAll: enhanceAll, enhance: enhance, canHover: canHover };
 
-  $(function () {
+  function onReady(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function () {
     enhanceAll(document);
     if (window.MutationObserver && document.body) {
       new MutationObserver(function (muts) {
@@ -155,4 +160,4 @@
       }).observe(document.body, { childList: true, subtree: true });
     }
   });
-})(jQuery, window);
+})(window);

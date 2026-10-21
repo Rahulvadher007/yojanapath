@@ -1,11 +1,19 @@
 // Compare drawer: pick a starting scheme, tick others from the current 60+ set,
 // confirm to get a side-by-side feature matrix with tick marks.
-(function ($, g) {
-  var MAX_COLS = 5;
+(function (g) {
+  // One limit for the whole app — the drawer and the standalone compare page share it.
+  var MAX_COLS = (g.YPStore && g.YPStore.MAX_COMPARE) ? g.YPStore.MAX_COMPARE : 5;
   var sourceId = null;
   var picked = {};
   var view = 'pick';
   var lastFocus = null;
+
+  // Keep the stored comparison in step with the drawer, so the standalone compare
+  // page shows the same selection instead of an empty list.
+  function persist() {
+    if (!g.YPStore || !g.YPStore.setCompare) return;
+    g.YPStore.setCompare([sourceId].concat(Object.keys(picked).filter(function (k) { return picked[k]; })));
+  }
 
   // Every row is computed from real record fields — nothing is invented.
   var FEATURES = [
@@ -48,13 +56,15 @@
   function build() {
     var src = rec(sourceId);
     if (!src) return;
-    var d = $('#cmpDrawer'), b = $('#cmpBody'), f = $('#cmpFoot');
+    var d = document.getElementById('cmpDrawer'), b = document.getElementById('cmpBody'), f = document.getElementById('cmpFoot');
+    if (!d || !b || !f) return;
+    var subEl = d.querySelector('.cmp-sub');
     if (view === 'pick') {
       var opts = pool();
-      d.find('.cmp-sub').text('Choose up to ' + (MAX_COLS - 1) + ' more from your ' + opts.length + ' matching schemes.');
+      if (subEl) subEl.textContent = 'Choose up to ' + (MAX_COLS - 1) + ' more from your ' + opts.length + ' matching schemes.';
       var n = Object.keys(picked).filter(function (k) { return picked[k]; }).length;
       var full = n >= MAX_COLS - 1;
-      b.html('<div class="cmp-inner">' +
+      b.innerHTML = '<div class="cmp-inner">' +
         '<div class="cmp-src">' +
         '<p class="cmp-sec">Starting from</p>' +
         '<div class="cmp-src-card">' +
@@ -82,13 +92,13 @@
             }).join('') + '</ul>' +
             (full ? '<p class="cmp-limit">Maximum of ' + MAX_COLS + ' schemes reached. Deselect one to swap it out.</p>' : '')
           : '<p class="cmp-empty">No other schemes in the current results to compare.</p>') +
-        '</div>');
-      f.html('<span class="cmp-count">' + (n ? n + ' selected' : 'None selected') + '</span>' +
-        '<button class="btn small" id="cmpConfirm"' + (n ? '' : ' disabled') + '>Compare ' + (n ? n + ' scheme' + (n > 1 ? 's' : '') : '') + '</button>');
+        '</div>';
+      f.innerHTML = '<span class="cmp-count">' + (n ? n + ' selected' : 'None selected') + '</span>' +
+        '<button class="btn small" id="cmpConfirm"' + (n ? '' : ' disabled') + '>Compare ' + (n ? n + ' scheme' + (n > 1 ? 's' : '') : '') + '</button>';
     } else {
       var cols = [src].concat(Object.keys(picked).filter(function (k) { return picked[k]; }).map(rec).filter(Boolean));
-      d.find('.cmp-sub').text('Comparing ' + cols.length + ' schemes side by side.');
-      b.html('<div class="cmp-inner"><div class="cmp-scroll"><table class="cmp-table">' +
+      if (subEl) subEl.textContent = 'Comparing ' + cols.length + ' schemes side by side.';
+      b.innerHTML = '<div class="cmp-inner"><div class="cmp-scroll"><table class="cmp-table">' +
         '<thead><tr><th class="cmp-corner">Property</th>' + cols.map(function (s, i) {
           return '<th><span class="cmp-col-tag">' + (i === 0 ? 'Starting from' : 'Selected') + '</span>' +
             '<span class="cmp-col-name">' + g.esc(s.name) + '</span></th>';
@@ -105,9 +115,9 @@
             return '<td>' + tick(hits[ci]) + '</td>';
           }).join('') + '</tr>';
         }).join('') +
-        '</tbody></table></div></div>');
-      f.html('<button class="btn small ghost" id="cmpBack">Choose different schemes</button>' +
-        '<button class="btn small" id="cmpDone">Done</button>');
+        '</tbody></table></div></div>';
+      f.innerHTML = '<button class="btn small ghost" id="cmpBack">Choose different schemes</button>' +
+        '<button class="btn small" id="cmpDone">Done</button>';
     }
   }
 
@@ -116,32 +126,72 @@
     picked = {};
     view = 'pick';
     lastFocus = document.activeElement;
-    $('#cmpOverlay').addClass('on');
-    $('#cmpDrawer').addClass('on').attr('aria-hidden', 'false');
-    $('body').addClass('drawer-open');
+    persist();
+    var overlay = document.getElementById('cmpOverlay');
+    var drawer = document.getElementById('cmpDrawer');
+    if (overlay) overlay.classList.add('on');
+    if (drawer) {
+      drawer.classList.add('on');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+    document.body.classList.add('drawer-open');
     build();
-    $('#cmpBody input').first().trigger('focus');
+    var firstInp = document.querySelector('#cmpBody input');
+    if (firstInp) firstInp.focus();
   }
+
   function close() {
-    $('#cmpOverlay').removeClass('on');
-    $('#cmpDrawer').removeClass('on').attr('aria-hidden', 'true');
-    $('body').removeClass('drawer-open');
+    var overlay = document.getElementById('cmpOverlay');
+    var drawer = document.getElementById('cmpDrawer');
+    if (overlay) overlay.classList.remove('on');
+    if (drawer) {
+      drawer.classList.remove('on');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.remove('drawer-open');
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  $(function () {
-    $('#cmpOverlay,#cmpClose,#cmpDone').on('click', close);
-    $('#cmpBody').on('change', 'input[data-pick]', function () {
-      var id = $(this).attr('data-pick');
-      var n = Object.keys(picked).filter(function (k) { return picked[k]; }).length;
-      if (this.checked && n >= MAX_COLS - 1) { this.checked = false; return; }
-      if (this.checked) picked[id] = true; else delete picked[id];
-      build();
+  function onReady(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function () {
+    var overlay = document.getElementById('cmpOverlay');
+    if (overlay) overlay.addEventListener('click', close);
+    var closeBtn = document.getElementById('cmpClose');
+    if (closeBtn) closeBtn.addEventListener('click', close);
+
+    var b = document.getElementById('cmpBody');
+    if (b) {
+      b.addEventListener('change', function (e) {
+        var pickInp = e.target.closest('input[data-pick]');
+        if (pickInp) {
+          var id = pickInp.getAttribute('data-pick');
+          var n = Object.keys(picked).filter(function (k) { return picked[k]; }).length;
+          if (pickInp.checked && n >= MAX_COLS - 1) { pickInp.checked = false; return; }
+          if (pickInp.checked) picked[id] = true; else delete picked[id];
+          persist();
+          build();
+        }
+      });
+    }
+
+    var f = document.getElementById('cmpFoot');
+    if (f) {
+      f.addEventListener('click', function (e) {
+        if (e.target.closest('#cmpConfirm')) { view = 'matrix'; build(); }
+        else if (e.target.closest('#cmpBack')) { view = 'pick'; build(); }
+        else if (e.target.closest('#cmpDone')) { close(); }
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      var drawer = document.getElementById('cmpDrawer');
+      if (e.key === 'Escape' && drawer && drawer.classList.contains('on')) close();
     });
-    $('#cmpFoot').on('click', '#cmpConfirm', function () { view = 'matrix'; build(); });
-    $('#cmpFoot').on('click', '#cmpBack', function () { view = 'pick'; build(); });
-    $(document).on('keydown', function (e) { if (e.key === 'Escape' && $('#cmpDrawer').hasClass('on')) close(); });
 
     g.YPCompare = { open: open, close: close };
   });
-})(jQuery, window);
+})(window);

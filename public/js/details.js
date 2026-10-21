@@ -1,7 +1,7 @@
 // Scheme details: overview, eligibility, application, document checklist, sources.
 // Content is rendered from the stored record only. Nothing is invented — where the
 // record has no verified detail, the section says so and points at the official page.
-(function ($, g) {
+(function (g) {
   // Placeholder steps we seeded for records we have not transcribed yet.
   var PLACEHOLDER_STEPS = [
     'open the official source',
@@ -14,16 +14,28 @@
   }
   function host(u) { try { return new URL(u).hostname; } catch { return u; } }
 
-  $(function () {
-    if (!$('#detail').length) return;
+  function onReady(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function () {
+    var detailEl = document.getElementById('detail');
+    if (!detailEl) return;
+    var statusEl = document.getElementById('status');
     var id = new URLSearchParams(location.search).get('id'), answers = g.YPStore.getAnswers();
-    $('#status').text('Loading…');
-    $('#detail').html(g.ypSkel(1)).attr('aria-busy', 'true');
-    g.YPApi.schemes().done(function (data) {
-      $('#detail').removeAttr('aria-busy');
+    if (statusEl) statusEl.textContent = 'Loading…';
+    detailEl.innerHTML = g.ypSkel(1);
+    detailEl.setAttribute('aria-busy', 'true');
+    g.YPApi.schemes().then(function (data) {
+      detailEl.removeAttribute('aria-busy');
       var s = (data || []).find(function (x) { return x.id === id; });
-      if (!s) { $('#detail').empty(); $('#status').text('Scheme not found.'); return; }
-      $('#status').text('');
+      if (!s) {
+        detailEl.innerHTML = '';
+        if (statusEl) statusEl.textContent = 'Scheme not found.';
+        return;
+      }
+      if (statusEl) statusEl.textContent = '';
       var ev = g.YPRules.evaluate(s, answers);
       var official = '<a href="' + g.esc(s.officialInfoUrl) + '" target="_blank" rel="noopener">' + g.esc(host(s.officialInfoUrl)) + '</a>';
 
@@ -80,7 +92,7 @@
           '<span class="src-meta">' + g.esc(x.sourceType || 'official') + ' · checked ' + g.esc(x.checkedAt || s.lastVerified) + '</span></li>';
       }).join('') + '</ul>' + (s.officialApplicationUrl ? '<p class="prov">Apply: <a href="' + g.esc(s.officialApplicationUrl) + '" target="_blank" rel="noopener">' + g.esc(host(s.officialApplicationUrl)) + '</a></p>' : '');
 
-      $('#detail').html('<article class="card detail">' +
+      detailEl.innerHTML = '<article class="card detail">' +
         '<header class="detail-hero">' +
           '<p class="detail-kicker">' + g.esc(s.coverage.type) + ' · ' + g.esc(s.benefit.type) + '</p>' +
           '<h2>' + g.esc(s.name) + '</h2>' +
@@ -98,14 +110,22 @@
           '<a class="btn" href="checklist.html?id=' + encodeURIComponent(s.id) + '">Build checklist</a>' +
           '<p class="prov">Rule results (ours), source transcription (our review) and the official decision (the authority) are three different things. Only the authority decides.</p>' +
         '</footer>' +
-      '</article>');
+      '</article>';
 
-      $('#detail').on('change', 'input[data-doc]', function () {
-        var i = $(this).attr('data-doc');
-        chk[i] = this.checked;
-        g.YPStore.setCheck(s.id, chk);
-        $('#docProgress').text(docs.filter(function (_, k) { return chk[k]; }).length + ' of ' + docs.length + ' ready');
+      detailEl.addEventListener('change', function (e) {
+        var inp = e.target.closest('input[data-doc]');
+        if (inp) {
+          var i = inp.getAttribute('data-doc');
+          chk[i] = inp.checked;
+          g.YPStore.setCheck(s.id, chk);
+          var docProg = document.getElementById('docProgress');
+          if (docProg) docProg.textContent = docs.filter(function (_, k) { return chk[k]; }).length + ' of ' + docs.length + ' ready';
+        }
       });
-    }).fail(function () { $('#detail').empty().removeAttr('aria-busy'); $('#status').text('Could not load scheme.'); });
+    }).catch(function () {
+      detailEl.innerHTML = '';
+      detailEl.removeAttribute('aria-busy');
+      if (statusEl) statusEl.textContent = 'Could not load scheme.';
+    });
   });
-})(jQuery, window);
+})(window);

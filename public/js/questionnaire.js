@@ -1,6 +1,6 @@
 // Problem-first conditional questionnaire. Goal cards first, then only the
 // follow-up questions that can change the recommendation, then an answer review.
-(function ($, g) {
+(function (g) {
   var NONE = '__none';
   var ICONS = {
     idea: '<path d="M20 8a9 9 0 0 0-5 16.5V28h10v-3.5A9 9 0 0 0 20 8z"/><path d="M16 32h8"/>',
@@ -29,7 +29,7 @@
       { value: 'understand', title: 'Understand a health scheme', desc: 'Just exploring — skip the personal questions.' }
     ]
   };
-var FIELDS = {
+  var FIELDS = {
     state: { label: 'Where will it operate?', labelHealth: 'Which state do you live in?', options: [['Gujarat', 'Gujarat'], ['Maharashtra', 'Maharashtra'], ['Delhi', 'Delhi'], ['Karnataka', 'Karnataka'], ['Other', 'Another state']], help: 'Some schemes are state-specific.' },
     applicantType: { label: 'Who is applying?', options: [['individual', 'Individual founder'], ['startup', 'A recognised startup'], ['msme', 'MSME or registered business']], help: 'Schemes cover different applicant types.' },
     businessStage: { label: 'Where is the business now?', options: [['idea', 'Just an idea'], ['early-stage', 'Early-stage startup'], ['operating', 'Already operating']], help: 'Seed programs cover idea and early-stage; loans cover all.' },
@@ -53,16 +53,18 @@ var FIELDS = {
   function readField(f) {
     var cfg = FIELDS[f];
     if (cfg.type === 'radio') {
-      var c = $('#qform input[type=radio][data-field="' + f + '"]:checked');
-      return c.length ? c.val() : null;
+      var c = document.querySelector('#qform input[type="radio"][data-field="' + f + '"]:checked');
+      return c ? c.value : null;
     }
-    var el = $('#qform [data-field="' + f + '"]').first();
-    if (!el.length) return null;
-    var v = el.val();
+    var el = document.querySelector('#qform [data-field="' + f + '"]');
+    if (!el) return null;
+    var v = el.value;
     return (v === undefined || v === '') && cfg.type === 'number' ? '' : v;
   }
   function markInvalid(f, on) {
-    $('#qform [data-field="' + f + '"]').attr('aria-invalid', on ? 'true' : 'false');
+    document.querySelectorAll('#qform [data-field="' + f + '"]').forEach(function (el) {
+      el.setAttribute('aria-invalid', on ? 'true' : 'false');
+    });
   }
   function qIndexOf(f) {
     var st = steps();
@@ -121,17 +123,35 @@ var FIELDS = {
   // module-level helpers and cannot see anything declared inside the DOM-ready block.
   var d, ans, stepIdx = 0;
   function steps() { return flowFor(d, ans); }
-  $(function () {
-    if (!$('#qform').length) return;
-    d = domain(); ans = $.extend({ domain: d }, g.YPStore.getDraft(d)); stepIdx = 0;
+
+  function onReady(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function () {
+    var qform = document.getElementById('qform');
+    if (!qform) return;
+    d = domain();
+    ans = Object.assign({ domain: d }, g.YPStore.getDraft(d));
+    stepIdx = 0;
     g.YPStore.setLastDomain(d);
     // Keep the nav CTA pointed at this pathway so results never fall back to startup.
-    $('#qresults').attr('href', 'results.html?domain=' + encodeURIComponent(d));
+    var qresults = document.getElementById('qresults');
+    if (qresults) qresults.setAttribute('href', 'results.html?domain=' + encodeURIComponent(d));
+
     function showSummary(msg, anchor) {
-      $('#qsummary').html('<div class="error-summary" role="alert" tabindex="-1" id="qsumbox"><h2 style="font-size:20px;margin:0 0 8px">There is a problem</h2><p style="margin:0"><a href="' + (anchor || '#qstep0') + '">' + g.esc(msg) + '</a></p></div>');
-      $('#qsumbox').focus();
+      var qsummary = document.getElementById('qsummary');
+      if (qsummary) {
+        qsummary.innerHTML = '<div class="error-summary" role="alert" tabindex="-1" id="qsumbox"><h2 style="font-size:20px;margin:0 0 8px">There is a problem</h2><p style="margin:0"><a href="' + (anchor || '#qstep0') + '">' + g.esc(msg) + '</a></p></div>';
+        var sumbox = document.getElementById('qsumbox');
+        if (sumbox) sumbox.focus();
+      }
     }
-    function clearSummary() { $('#qsummary').empty(); }
+    function clearSummary() {
+      var qsummary = document.getElementById('qsummary');
+      if (qsummary) qsummary.innerHTML = '';
+    }
     function fieldLabel(f) { return (d === 'health-coverage' && FIELDS[f].labelHealth) ? FIELDS[f].labelHealth : FIELDS[f].label; }
     // Show the human label the user actually picked, not the stored value.
     function fieldValue(f) {
@@ -145,10 +165,18 @@ var FIELDS = {
       if (stepIdx >= st.length) stepIdx = st.length - 1;
       var s = st[stepIdx];
       clearSummary();
-      $('#qstep').text('Stage ' + (stepIdx + 1) + ' of ' + st.length + ' · ' + s.stage);
-      $('#qprog').attr({ max: st.length, value: stepIdx + 1 });
+      var qstep = document.getElementById('qstep');
+      if (qstep) qstep.textContent = 'Stage ' + (stepIdx + 1) + ' of ' + st.length + ' · ' + s.stage;
+      var qprog = document.getElementById('qprog');
+      if (qprog) {
+        qprog.max = st.length;
+        qprog.value = stepIdx + 1;
+      }
+      var backBtn = document.getElementById('backBtn');
+      var nextBtn = document.getElementById('nextBtn');
+
       if (s.kind === 'goal') {
-        $('#qform').html('<div class="goal-stage"><h2 class="goal-title" id="qstep0" tabindex="-1">What do you need help with?</h2>' +
+        qform.innerHTML = '<div class="goal-stage"><h2 class="goal-title" id="qstep0" tabindex="-1">What do you need help with?</h2>' +
           '<div class="picker goal-grid" role="radiogroup" aria-labelledby="qstep0">' +
           GOALS[d].map(function (gl) {
             var on = ans.goal === gl.value;
@@ -156,68 +184,103 @@ var FIELDS = {
               '<span class="pick-art">' + icon(gl.value) + '</span>' +
               '<span class="pick-title">' + g.esc(gl.title) + '</span>' +
               '<span class="pick-desc">' + g.esc(gl.desc) + '</span></button>';
-          }).join('') + '</div></div>');
-        $('#backBtn').toggle(stepIdx > 0);
-        $('#nextBtn').text('Next →');
+          }).join('') + '</div></div>';
+        if (backBtn) backBtn.style.display = (stepIdx > 0) ? '' : 'none';
+        if (nextBtn) nextBtn.textContent = 'Next →';
       } else if (s.kind === 'review') {
         var rows = [];
         var gl = GOALS[d].filter(function (x) { return x.value === ans.goal; })[0];
         rows.push(['Goal', gl ? gl.title : 'Not sure']);
         Object.keys(FIELDS).forEach(function (f) { if (ans[f] !== undefined) rows.push([fieldLabel(f), fieldValue(f)]); });
-        $('#qform').html('<p class="lead" id="qstep0" tabindex="-1">Check your answers</p>' + g.ypTable('<table class="compare"><thead><tr><th scope="col">Question</th><th scope="col">Your answer</th></tr></thead><tbody>' +
+        qform.innerHTML = '<p class="lead" id="qstep0" tabindex="-1">Check your answers</p>' + g.ypTable('<table class="compare"><thead><tr><th scope="col">Question</th><th scope="col">Your answer</th></tr></thead><tbody>' +
           rows.map(function (r) { return '<tr><th scope="row">' + g.esc(r[0]) + '</th><td>' + g.esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table>') +
-          '<p class="meta">“Not sure” is fine — those conditions become “needs confirmation” in your results.</p>');
-        $('#backBtn').show();
-        $('#nextBtn').text('See results');
+          '<p class="meta">“Not sure” is fine — those conditions become “needs confirmation” in your results.</p>';
+        if (backBtn) backBtn.style.display = '';
+        if (nextBtn) nextBtn.textContent = 'See results';
       } else {
-        $('#qform').html('<div class="q-fieldset">' + s.fields.map(function (f, i) {
+        qform.innerHTML = '<div class="q-fieldset">' + s.fields.map(function (f, i) {
           var opts = (f === 'fundingPurpose' && d === 'startup-funding') ? purposeOptions(ans.goal) : FIELDS[f].options;
-          var cur = ans[f] === undefined ? NONE : ans[f];
           return '<label for="qf' + i + '" id="qstep' + i + '">' + g.esc(fieldLabel(f)) + '</label>' +
             fieldControl(f, i, opts) +
             '<p class="q-help" id="qfh' + i + '"><span class="q-help-tag">Why</span>' + g.esc(FIELDS[f].help) + '</p><p class="field-error" id="qfe' + i + '" role="alert"></p>';
-        }).join('') + '</div>');
-        if (!$('#qform').children().length) { $('#qstep').text('This step could not be displayed — please go back and try again.'); return; }
-        $('#backBtn').toggle(stepIdx > 0);
-        $('#nextBtn').text(stepIdx === st.length - 2 ? 'Review answers' : 'Continue');
+        }).join('') + '</div>';
+        if (!qform.children.length) {
+          if (qstep) qstep.textContent = 'This step could not be displayed — please go back and try again.';
+          return;
+        }
+        if (backBtn) backBtn.style.display = (stepIdx > 0) ? '' : 'none';
+        if (nextBtn) nextBtn.textContent = stepIdx === st.length - 2 ? 'Review answers' : 'Continue';
       }
     }
-    $('#qform').on('click', '[data-goal]', function () {
-      ans.goal = $(this).attr('data-goal'); g.YPStore.setDraft(d, ans);
-      $('#qform [data-goal]').each(function () {
-        var on = $(this).attr('data-goal') === ans.goal;
-        $(this).attr('aria-checked', on ? 'true' : 'false').toggleClass('selected', on);
-      });
-    });
-    $('#backBtn').on('click', function () { if (stepIdx > 0) { stepIdx--; render(); } });
-    $('#nextBtn').on('click', function () {
-      var st = steps(), s = st[stepIdx];
-      if (s.kind === 'goal') {
-        if (!ans.goal) { showSummary('Please choose what you need help with.'); return; }
-        stepIdx++; render(); return;
+
+    qform.addEventListener('click', function (e) {
+      var goalBtn = e.target.closest('[data-goal]');
+      if (goalBtn) {
+        ans.goal = goalBtn.getAttribute('data-goal');
+        g.YPStore.setDraft(d, ans);
+        qform.querySelectorAll('[data-goal]').forEach(function (btn) {
+          var on = btn.getAttribute('data-goal') === ans.goal;
+          btn.setAttribute('aria-checked', on ? 'true' : 'false');
+          btn.classList.toggle('selected', on);
+        });
       }
-      if (s.kind === 'review') { g.YPStore.setAnswers(ans); location.href = 'results.html?domain=' + d; return; }
-      var bad = null;
-      s.fields.forEach(function (f, i) {
-        var v = readField(f);
-        if (v === null || v === NONE) {
-          bad = { f: f, i: i };
-          markInvalid(f, true);
-          $('#qfe' + i).text('Please answer this, or leave it as “not sure”.');
-        } else {
-          ans[f] = v; markInvalid(f, false); $('#qfe' + i).empty();
+    });
+
+    var backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        if (stepIdx > 0) {
+          stepIdx--;
+          render();
         }
       });
-      if (bad) { showSummary('Please answer: ' + fieldLabel(bad.f), '#qstep' + bad.i); return; }
-      g.YPStore.setDraft(d, ans);
-      stepIdx++;
-      render();
+    }
+
+    var nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        var st = steps(), s = st[stepIdx];
+        if (s.kind === 'goal') {
+          if (!ans.goal) { showSummary('Please choose what you need help with.'); return; }
+          stepIdx++; render(); return;
+        }
+        if (s.kind === 'review') { g.YPStore.setAnswers(ans); location.href = 'results.html?domain=' + d; return; }
+        var bad = null;
+        s.fields.forEach(function (f, i) {
+          var v = readField(f);
+          var fe = document.getElementById('qfe' + i);
+          if (v === null || v === NONE) {
+            bad = { f: f, i: i };
+            markInvalid(f, true);
+            if (fe) fe.textContent = 'Please answer this, or leave it as “not sure”.';
+          } else {
+            ans[f] = v;
+            markInvalid(f, false);
+            if (fe) fe.textContent = '';
+          }
+        });
+        if (bad) { showSummary('Please answer: ' + fieldLabel(bad.f), '#qstep' + bad.i); return; }
+        g.YPStore.setDraft(d, ans);
+        stepIdx++;
+        render();
+      });
+    }
+
+    qform.addEventListener('change', function (e) {
+      var fld = e.target.closest('[data-field]');
+      if (fld) {
+        var f = fld.getAttribute('data-field');
+        var v = readField(f);
+        if (v !== null && v !== NONE) {
+          ans[f] = v;
+          g.YPStore.setDraft(d, ans);
+          markInvalid(f, false);
+          var fe = document.getElementById('qfe' + qIndexOf(f));
+          if (fe) fe.textContent = '';
+        }
+      }
     });
-    $('#qform').on('change', '[data-field]', function () {
-      var f = $(this).attr('data-field');
-      var v = readField(f);
-      if (v !== null && v !== NONE) { ans[f] = v; g.YPStore.setDraft(d, ans); markInvalid(f, false); $('#qfe' + qIndexOf(f)).empty(); }
-    });
+
     render();
   });
-})(jQuery, window);
+})(window);

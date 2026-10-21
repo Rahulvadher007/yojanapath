@@ -1,32 +1,64 @@
 // Shared header/footer + safe text escaping.
-(function ($, g) {
-  $(function () {
+(function (g) {
+  function onReady(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function () {
     // Back control lives in the page, not the navbar — skipped on the landing page.
     var isHome = /(^|\/)index\.html$/.test(location.pathname) || /\/$/.test(location.pathname);
     if (!isHome) {
       var back = '<nav class="crumbs" aria-label="Back"><button type="button" class="link-back" id="pageBack"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Back</button></nav>';
-      var $m = $('#main');
-      if ($m.length) { if ($m.hasClass('wrap')) $m.prepend(back); else $m.prepend('<div class="wrap page-back">' + back + '</div>'); }
-      $('#pageBack').on('click', function () {
-        if (document.referrer && history.length > 1) history.back();
-        else location.href = 'index.html';
-      });
+      var m = document.getElementById('main');
+      if (m) {
+        if (m.classList.contains('wrap')) {
+          m.insertAdjacentHTML('afterbegin', back);
+        } else {
+          m.insertAdjacentHTML('afterbegin', '<div class="wrap page-back">' + back + '</div>');
+        }
+      }
+      var pageBack = document.getElementById('pageBack');
+      if (pageBack) {
+        pageBack.addEventListener('click', function () {
+          if (document.referrer && history.length > 1) history.back();
+          else location.href = 'index.html';
+        });
+      }
     }
-    $('#menuBtn').on('click', function () {
-      var open = $('nav.main').toggleClass('open').hasClass('open');
-      $(this).attr('aria-expanded', open ? 'true' : 'false');
+    var menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', function () {
+        var nav = document.querySelector('nav.main');
+        if (nav) {
+          var open = nav.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+      });
+      // Vector menu icon (consistent, themeable); hide from AT as label sits on the button.
+      menuBtn.innerHTML = '<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    }
+
+    document.addEventListener('keydown', function (e) {
+      var nav = document.querySelector('nav.main');
+      if (e.key === 'Escape' && nav && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        if (menuBtn) {
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuBtn.focus();
+        }
+      }
     });
-    $(document).on('keydown', function (e) { if (e.key === 'Escape' && $('nav.main').hasClass('open')) { $('nav.main').removeClass('open'); $('#menuBtn').attr('aria-expanded', 'false').focus(); } });
-    // Vector menu icon (consistent, themeable); hide from AT as label sits on the button.
-    $('#menuBtn').html('<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>');
+
     // Active nav state from current page (action buttons are not nav locations).
     var page = (location.pathname.split('/').pop() || 'index.html').split('?')[0];
-    $('nav.main a').each(function () {
-      var href = $(this).attr('href') || '';
-      if ($(this).hasClass('btn')) return;
-      if (href.split('?')[0] === page) $(this).attr('aria-current', 'page');
+    document.querySelectorAll('nav.main a').forEach(function (el) {
+      var href = el.getAttribute('href') || '';
+      if (el.classList.contains('btn')) return;
+      if (href.split('?')[0] === page) el.setAttribute('aria-current', 'page');
     });
   });
+
   // Skeleton placeholder (stable layout while AJAX loads; pair with aria-busy).
   g.ypSkel = function (n) {
     var h = '';
@@ -56,4 +88,4 @@
       '<span class="cond-text">' + g.esc(r.description) + '</span>' +
       '<span class="cond-ans">Your answer: <b>' + g.esc(g.ypAnswerText(answerVal)) + '</b></span></li>';
   };
-})(jQuery, window);
+})(window);
